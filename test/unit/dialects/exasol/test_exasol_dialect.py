@@ -1,7 +1,4 @@
-import pytest
-
-
-from dbbuilder.dialects.exasol import Exasol
+from tdbp.dialects.exasol.exasol import Exasol
 
 def test_create_schema():
     dialect = Exasol()

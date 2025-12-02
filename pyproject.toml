@@ -1,0 +1,14 @@
+[project]
+name = "test-db-builder-python"
+version = "0.1.0"
+description = "Write compact code to setup up database contents in integration tests"
+authors = [
+    { name = "Sebastian Bär", email = "sebastian.baer@exasol.com" }
+]
+
+dependencies = [
+    "pytest",
+    "pyexasol",
+    # Move the following to test dependencies
+    "exasol-integration-test-docker-environment"
+]
