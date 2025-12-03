@@ -8,6 +8,9 @@ It helps developers write cleaner, more maintainable database integration tests 
 TDDB promotes the concept of disposable test setups. The compact code encourages keeping each test independent by having it create its own test dataset.
 This also makes reviews much easier, since setup execution and assertions are close to each other.
 
+Please note that TDDB aims at functional tests, where the amount of data required for each test is usually small.
+If you need to test with large amounts of data, TDDB is not the right approach. It is especially ill-suited for performance testing.
+
 This project is inspired by Exasol's Test Database Builder for Java (https://github.com/exasol/test-db-builder-java).
 
 Target Audience
@@ -23,7 +26,7 @@ TDDB is designed for:
 
 .. tip:: We recommend using TDDB when:
 
-    - You need to create temporary database objects for testing
+    - You need to create temporary database objects for functional testing
     - You want to isolate tests from each other
     - You need to repeatedly set up and tear down test data
     - You want to make your database tests more readable, maintainable and easy to review
@@ -54,15 +57,16 @@ We recommend to make the object factory a fixture in your integration test and p
         factory.purge_user_objects()  # Clean slate for each test
         return factory
 
-With that done the test preparation gets very compact
+With that done, the test preparation gets very compact.
 
 .. code-block:: python3
 
     def test_insert_customers(factory):
         # Prepare the test database
         schema = factory.create_schema("SALES")
-        customers = schema.create_table("CUSTOMERS", ID="DECIMAL(12,0)", NAME="VARCHAR(255)")
-        customers.insert(1, "Alice").insert(2, "Bob")
+        table = schema.create_table("CUSTOMERS",
+            ID="DECIMAL(12,0)", NAME="VARCHAR(255)")
+        table.insert(1, "Alice").insert(2, "Bob")
 
         # Execute your test
         # ...

@@ -59,3 +59,4 @@ def test_chained_multiple_row_insert(factory, db_assert):
              FROM {table.fully_qualified_name()}
              ORDER BY "ID" ASC"""
     ).returns([(1, "Test"), (2, "Test2"), (3, "Test3"), (4, "Test4"), (5, "Test5"), (6, "Test6")]))
+

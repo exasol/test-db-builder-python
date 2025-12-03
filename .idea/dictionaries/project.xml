@@ -2,6 +2,7 @@
   <dictionary name="project">
     <words>
       <w>exasol</w>
+      <w>tddb</w>
     </words>
   </dictionary>
 </component>
