@@ -1,13 +1,13 @@
-from tdbp.DatabaseObjectWriter import DatabaseObjectWriter
+from tdbp.database_object_listener import DatabaseObjectListener
 from tdbp.schema import Schema
 
 
 class Dialect:
-    def __init__(self, name: str, writer: DatabaseObjectWriter):
+    def __init__(self, name: str, listener: DatabaseObjectListener):
         self.name = name
-        self.writer = writer
+        self.listener = listener
 
     def create_schema(self, name: str) -> Schema:
-        schema = Schema(name)
-        self.writer.write(schema)
+        schema = Schema(self.listener, name)
+        self.listener.on_create(schema)
         return schema

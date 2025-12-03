@@ -1,5 +1,3 @@
-from time import sleep
-
 from tdbp.dialects.exasol.exasol import Exasol
 from tdbp.dialects.exasol.exasol_connection_factory import connect
 
