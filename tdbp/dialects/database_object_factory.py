@@ -2,7 +2,7 @@ from tdbp.database_object_listener import DatabaseObjectListener
 from tdbp.schema import Schema
 
 
-class Dialect:
+class DatabaseObjectFactory:
     def __init__(self, name: str, listener: DatabaseObjectListener):
         self.name = name
         self.listener = listener

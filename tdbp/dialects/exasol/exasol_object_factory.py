@@ -1,8 +1,8 @@
-from tdbp.dialects.dialect import Dialect
+from tdbp.dialects.database_object_factory import DatabaseObjectFactory
 from tdbp.dialects.exasol.exasol_immediate_database_object_writer import ExasolImmediateDatabaseObjectListener
 
 
-class Exasol(Dialect):
+class ExasolObjectFactory(DatabaseObjectFactory):
     def __init__(self):
         super().__init__("Exasol", ExasolImmediateDatabaseObjectListener())
 

@@ -6,6 +6,9 @@ from tdbp.table import Table
 class Schema(DatabaseObject):
     def __init__(self, listener: DatabaseObjectListener, schema_name: str):
         super().__init__(listener, schema_name)
+
+    def fully_qualified_name(self) -> str:
+        return f'"{self.name}"'
         
     def create_table(self, table_name: str, **columns):
         table = Table(self.listener, table_name, self, **columns)

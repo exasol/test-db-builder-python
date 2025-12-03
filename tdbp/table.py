@@ -13,3 +13,6 @@ class Table(DatabaseObject):
         DatabaseObject.__init__(self, listener, table_name)
         self.schema = schema
         self.columns = columns
+
+    def fully_qualified_name(self) -> str:
+        return f'"{self.schema.name}"."{self.name}"'
