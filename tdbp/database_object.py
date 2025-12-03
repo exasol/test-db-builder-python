@@ -7,10 +7,26 @@ if TYPE_CHECKING:
 
 
 class DatabaseObject(ABC):
+    """
+    Abstract base class for database objects.
+
+    This class serves as a blueprint for defining database objects with a name
+    and an associated listener that observes events.
+
+    Attributes:
+        name (str): The name of the database object.
+        listener (DatabaseObjectListener): The listener that observes this database object.
+    """
+
     def __init__(self, listener: DatabaseObjectListener, name: str):
         self.name = name
         self.listener = listener
 
     @abstractmethod
     def fully_qualified_name(self) -> str:
-        pass
+        """
+        Retrieves the fully qualified name representation of an entity.
+
+        Returns:
+            str: The fully qualified name representation of the entity.
+        """

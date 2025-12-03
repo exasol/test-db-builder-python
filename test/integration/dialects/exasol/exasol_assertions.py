@@ -48,3 +48,8 @@ class QueryAssertion:
         else:
             expected_rows = [expected]
         return expected_rows
+
+    def returns_empty(self):
+        with self.connection.execute(self.sql) as statement:
+            actual = statement.fetchall()
+            assert actual == [], f"Expected empty result, got {actual}"
