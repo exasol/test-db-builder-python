@@ -77,4 +77,4 @@ With that done, the test preparation gets very compact.
 Information for Users
 ---------------------
 
-* 📖 `User Guide <docs/user_guide.rst>`_: Detailed instructions on using TDDB including examples and best practices
+* 📖 `User Guide <doc/user_guide/user_guide.rst>`_: Detailed instructions on using TDDB including examples and best practices
