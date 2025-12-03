@@ -1,17 +1,10 @@
-import pytest
-
-from tdbp.dialects.exasol.exasol_connection_factory import connect
-from tdbp.dialects.exasol.exasol_object_factory import ExasolObjectFactory
-from test.integration.dialects.exasol.exasol_assertions import ExasolAssertions
-
-
 def test_create_schema(factory, db_assert):
     schema = factory.create_schema("CREATE_SCHEMA_TEST")
     (db_assert.assert_query(
         f"""SELECT "SCHEMA_NAME"
             FROM "SYS"."EXA_DBA_SCHEMAS"
             WHERE "SCHEMA_NAME" = '{schema.name}'""")
-     .returns([(schema.name,)]))
+     .returns(schema.name))
 
 
 def test_create_table(factory, db_assert):
@@ -33,7 +26,7 @@ def test_single_row_insert(factory, db_assert):
         f"""SELECT *
             FROM {table.fully_qualified_name()}
             ORDER BY "ID" ASC""")
-     .returns([(1, "Test")]))
+     .returns(1, "Test"))
 
 
 def test_chained_single_row_insert(factory, db_assert):
@@ -66,21 +59,3 @@ def test_chained_multiple_row_insert(factory, db_assert):
              FROM {table.fully_qualified_name()}
              ORDER BY "ID" ASC"""
     ).returns([(1, "Test"), (2, "Test2"), (3, "Test3"), (4, "Test4"), (5, "Test5"), (6, "Test6")]))
-
-
-@pytest.fixture
-def factory(connection):
-    factory = ExasolObjectFactory(connection)
-    factory.purge_user_objects()
-    return factory
-
-@pytest.fixture(scope="module")
-def connection():
-    with connect() as connection:
-        yield connection
-
-
-@pytest.fixture()
-def db_assert():
-    with ExasolAssertions() as assertions:
-        yield assertions
