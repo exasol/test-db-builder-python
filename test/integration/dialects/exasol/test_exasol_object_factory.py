@@ -1,5 +1,6 @@
 import pytest
 
+from tdbp.dialects.exasol.exasol_connection_factory import connect
 from tdbp.dialects.exasol.exasol_object_factory import ExasolObjectFactory
 from test.integration.dialects.exasol.exasol_assertions import ExasolAssertions
 
@@ -68,10 +69,15 @@ def test_chained_multiple_row_insert(factory, db_assert):
 
 
 @pytest.fixture
-def factory():
-    factory = ExasolObjectFactory()
+def factory(connection):
+    factory = ExasolObjectFactory(connection)
     factory.purge_user_objects()
     return factory
+
+@pytest.fixture(scope="module")
+def connection():
+    with connect() as connection:
+        yield connection
 
 
 @pytest.fixture()

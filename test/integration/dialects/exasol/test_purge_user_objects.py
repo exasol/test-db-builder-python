@@ -2,7 +2,7 @@ from tdbp.dialects.exasol.exasol_object_factory import ExasolObjectFactory
 from tdbp.dialects.exasol.exasol_connection_factory import connect
 
 
-def test_purge_user_objects():
+def test_purge_user_objects() -> None:
     with connect() as connection:
         connection.execute("CREATE SCHEMA IF NOT EXISTS PURGE_SCHEMA_1")
         connection.execute("CREATE SCHEMA IF NOT EXISTS PURGE_SCHEMA_2")

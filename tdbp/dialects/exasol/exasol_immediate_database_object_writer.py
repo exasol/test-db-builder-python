@@ -1,3 +1,5 @@
+from pyexasol import ExaConnection
+
 from tdbp.database_object import DatabaseObject
 from tdbp.database_object_listener import DatabaseObjectListener
 from tdbp.table import Table
@@ -6,6 +8,8 @@ from tdbp.dialects.exasol.exasol_connection_factory import connect
 
 
 class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
+    def __init__(self, connection: ExaConnection):
+        self.connection = connection
 
     def on_create(self, database_object: DatabaseObject) -> None:
         sql = ""
@@ -15,19 +19,18 @@ class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
             print(f"Columns: {database_object.columns}")
             column_definitions = [f""""{key}" {value}""" for key, value in database_object.columns.items()]
             sql = f"""CREATE TABLE {database_object.fully_qualified_name()}({", ".join(column_definitions)})"""
-        with connect() as connection:
-            connection.execute(sql)
-            connection.commit()
+        self.connection.execute(sql)
+        self.connection.commit()
 
-    def on_insert(self, table: Table, values: list):
+    def on_insert(self, table: Table, values: list) -> None:
         self.on_insert_all(table, [values])
 
-    def on_insert_all(self, table: Table, values: list[list]):
+    def on_insert_all(self, table: Table, values: list[list]) -> None:
         with connect() as connection:
             connection.ext.insert_multi((table.schema.name, table.name), values)
             connection.commit()
 
-    def purge_user_objects(self):
+    def purge_user_objects(self) -> None:
         with connect() as connection:
             with connection.execute("SELECT schema_name FROM sys.exa_dba_schemas") as statement:
                 for row in statement:
