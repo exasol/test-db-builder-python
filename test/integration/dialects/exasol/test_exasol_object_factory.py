@@ -1,6 +1,5 @@
 import pytest
 
-from tdbp.dialects.exasol.exasol_connection_factory import connect
 from tdbp.dialects.exasol.exasol_object_factory import ExasolObjectFactory
 from test.integration.dialects.exasol.exasol_assertions import ExasolAssertions
 
@@ -45,6 +44,27 @@ def test_chained_single_row_insert(factory, db_assert):
             FROM {table.fully_qualified_name()}
             ORDER BY "ID" ASC""")
      .returns([(1, "Test"), (2, "Test2")]))
+
+
+def test_multiple_row_insert(factory, db_assert):
+    schema = factory.create_schema("INSERT_WITH_NAMED_COLUMNS_TEST")
+    table = schema.create_table("INSERT_WITH_NAMED_COLUMNS_TEST_TABLE", ID="DECIMAL(12,0)", NAME="VARCHAR(255)")
+    table.insert_all([1, "Test"], [2, "Test2"], [3, "Test3"])
+    (db_assert.assert_query(
+        f"""SELECT *
+             FROM {table.fully_qualified_name()}
+             ORDER BY "ID" ASC""")
+     .returns([(1, "Test"), (2, "Test2"), (3, "Test3")]))
+
+def test_chained_multiple_row_insert(factory, db_assert):
+    schema = factory.create_schema("INSERT_WITH_NAMED_COLUMNS_TEST")
+    table = schema.create_table("INSERT_WITH_NAMED_COLUMNS_TEST_TABLE", ID="DECIMAL(12,0)", NAME="VARCHAR(255)")
+    table.insert(1, "Test").insert_all([2, "Test2"], [3, "Test3"]).insert(4, "Test4").insert_all([5, "Test5"], [6, "Test6"])
+    (db_assert.assert_query(
+        f"""SELECT *
+             FROM {table.fully_qualified_name()}
+             ORDER BY "ID" ASC"""
+    ).returns([(1, "Test"), (2, "Test2"), (3, "Test3"), (4, "Test4"), (5, "Test5"), (6, "Test6")]))
 
 
 @pytest.fixture

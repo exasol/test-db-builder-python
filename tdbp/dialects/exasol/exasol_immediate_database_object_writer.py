@@ -6,6 +6,7 @@ from tdbp.dialects.exasol.exasol_connection_factory import connect
 
 
 class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
+
     def on_create(self, database_object: DatabaseObject) -> None:
         sql = ""
         if isinstance(database_object, Schema):
@@ -19,8 +20,11 @@ class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
             connection.commit()
 
     def on_insert(self, table: Table, values: list):
+        self.on_insert_all(table, [values])
+
+    def on_insert_all(self, table: Table, values: list[list]):
         with connect() as connection:
-            connection.ext.insert_multi((table.schema.name, table.name), [values])
+            connection.ext.insert_multi((table.schema.name, table.name), values)
             connection.commit()
 
     def purge_user_objects(self):

@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from tdbp.database_object import DatabaseObject
 
@@ -17,6 +17,10 @@ class Table(DatabaseObject):
     def fully_qualified_name(self) -> str:
         return f'"{self.schema.name}"."{self.name}"'
 
-    def insert(self, *values) -> Table:
+    def insert(self, *values: Any) -> Table:
         self.listener.on_insert(self, list(values))
+        return self
+
+    def insert_all(self, *values: Any) -> Table:
+        self.listener.on_insert_all(self, list(values))
         return self

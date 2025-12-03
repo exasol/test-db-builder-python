@@ -19,5 +19,9 @@ class DatabaseObjectListener(ABC):
         pass
 
     @abstractmethod
-    def on_insert(self, table: Table, values: list  ):
+    def on_insert(self, table: Table, values: list):
+        pass
+
+    @abstractmethod
+    def on_insert_all(self, self1, values: list[list]):
         pass
