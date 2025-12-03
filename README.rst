@@ -1,22 +1,22 @@
-Test Database Builder Python (TDDB)
-============================
+Test Database Builder for Python (TDBP)
+=======================================
 
-Test Database Builder Python (TDDB) is a lightweight framework that simplifies database integration testing by providing a fluent API for creating test database objects and test data.
+Test Database Builder for Python (TDBP) is a lightweight framework that simplifies database integration testing by providing a fluent API for creating test database objects and test data.
 
 It helps developers write cleaner, more maintainable database integration tests by eliminating boilerplate code and providing a consistent way to set up test data.
 
-TDDB promotes the concept of disposable test setups. The compact code encourages keeping each test independent by having it create its own test dataset.
+TDBP promotes the concept of disposable test setups. The compact code encourages keeping each test independent by having it create its own test dataset.
 This also makes reviews much easier, since setup execution and assertions are close to each other.
 
-Please note that TDDB aims at functional tests, where the amount of data required for each test is usually small.
-If you need to test with large amounts of data, TDDB is not the right approach. It is especially ill-suited for performance testing.
+Please note that TDBP aims at functional tests, where the amount of data required for each test is usually small.
+If you need to test with large amounts of data, TDBP is not the right approach. It is especially ill-suited for performance testing.
 
 This project is inspired by Exasol's Test Database Builder for Java (https://github.com/exasol/test-db-builder-java).
 
 Target Audience
 ---------------
 
-TDDB is designed for:
+TDBP is designed for:
 
 - Software developers writing database integration tests
 - QA engineers automating database tests
@@ -24,14 +24,14 @@ TDDB is designed for:
 - Anyone needing to create temporary test database objects and data
 
 
-.. tip:: We recommend using TDDB when:
+.. tip:: We recommend using TDBP when:
 
     - You need to create temporary database objects for functional testing
     - You want to isolate tests from each other
     - You need to repeatedly set up and tear down test data
     - You want to make your database tests more readable, maintainable and easy to review
 
-.. warning:: **Do not** use TDDB in any of the situations below:
+.. warning:: **Do not** use TDBP in any of the situations below:
 
     - Production data management
     - Performance testing (use dedicated tools instead)
@@ -77,4 +77,4 @@ With that done, the test preparation gets very compact.
 Information for Users
 ---------------------
 
-* 📖 `User Guide <doc/user_guide/user_guide.rst>`_: Detailed instructions on using TDDB including examples and best practices
+* 📖 `User Guide <doc/user_guide/user_guide.rst>`_: Detailed instructions on using TDBP including examples and best practices

@@ -1,10 +1,10 @@
-User Guide — Test Database Builder Python
-=========================================
+User Guide — Test Database Builder for Python
+=============================================
 
 
-Test Database Builder Python (TDDB) is a testing library designed to make database integration testing easier and more maintainable. It provides a fluent interface for setting up test data and cleaning up test databases between test cases.
+Test Database Builder for Python (TDBP) is a testing library designed to make database integration testing easier and more maintainable. It provides a fluent interface for setting up test data and cleaning up test databases between test cases.
 
-TDDB follows the principle that each test should be responsible for setting up exactly the data it needs, no more, no less. This approach leads to more maintainable tests that are easier to understand and modify.
+TDBP follows the principle that each test should be responsible for setting up exactly the data it needs, no more, no less. This approach leads to more maintainable tests that are easier to understand and modify.
 
 The Challenge
 -------------
@@ -23,20 +23,20 @@ There are a number of things wrong with these approach, too many to list them al
 4. Test cases are not independent — you cannot switch their order or run them in isolation.
 5. The test cases are tightly coupled — change one place, expect to have to change a couple others.
 
-How TDDB Solves These Issues
+How TDBP Solves These Issues
 ----------------------------
 
-The main purpose of TDDB is to reduce the boilerplate for test data setup to a minimum, so that developers can afford to have each single file prepare just the data it needs.
+The main purpose of TDBP is to reduce the boilerplate for test data setup to a minimum, so that developers can afford to have each single file prepare just the data it needs.
 
-Clean-up is even more convenient. With TDDB you can have a fixture clean your test database before each test case. This gives you a clean slate each time and prevents tests that write data to interfere with other tests.
+Clean-up is even more convenient. With TDBP you can have a fixture clean your test database before each test case. This gives you a clean slate each time and prevents tests that write data to interfere with other tests.
 
-Using TDDB
+Using TDBP
 ----------
 
 Preparing Test Fixtures
 ----------------------
 
-TDDB is designed to work with pytest fixtures. You'll need to set up a few basic fixtures to get started:
+TDBP is designed to work with pytest fixtures. You'll need to set up a few basic fixtures to get started:
 
 1. A connection fixture that manages the database connection
 2. A factory fixture that provides methods to create database objects
@@ -72,7 +72,7 @@ Preparing test data in a database usually happens in two steps. First you create
 Example: Creating and Populating a Table
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Here's a simple example of how to create a schema and table using TDDB:
+Here's a simple example of how to create a schema and table using TDBP:
 
 .. code-block:: python
 
@@ -89,7 +89,7 @@ Here's a simple example of how to create a schema and table using TDDB:
         # ... run the code under test here...
         # ... then validate the results.
 
-This example demonstrates several key features of TDDB:
+This example demonstrates several key features of TDBP:
 
 * The ``factory.create_schema()`` method creates a new schema in the database
 * ``schema.create_table()`` creates a table with the specified columns and data types
@@ -98,7 +98,7 @@ This example demonstrates several key features of TDDB:
 Example: Bulk Insert
 ~~~~~~~~~~~~~~~~~~~~
 
-Even in a functional test you sometimes need a couple of records in the same table. To make the code more compact, TDDB offers a bulk insert.
+Even in a functional test you sometimes need a couple of records in the same table. To make the code more compact, TDBP offers a bulk insert.
 
 .. code-block:: python
 
@@ -115,18 +115,18 @@ Even in a functional test you sometimes need a couple of records in the same tab
 Database Dialects
 -----------------
 
-TDDB is written database agnostic but comes with the concept of dialects. A dialect is an adapter for a specific database like Exasol or MariaDB.
+TDBP is written database agnostic but comes with the concept of dialects. A dialect is an adapter for a specific database like Exasol or MariaDB.
 
 This is especially useful if your integration test requires testing more than one database at a time. Imagine testing an ETL process between two databases for example.
 
-Dialects also allow implementing TDDB support for objects that only a certain database has. Exasol has UDFs and a corresponding SQL syntax that needs to be abstracted.
+Dialects also allow implementing TDBP support for objects that only a certain database has. Exasol has UDFs and a corresponding SQL syntax that needs to be abstracted.
 
 When Objects and Data get Written
 ---------------------------------
 
 When you create database object or populate them with data, events are sent to a listner that can act on them.
 
-A typical listener is a database object writer, that takes care of persisting the objects you create with TDDB.
+A typical listener is a database object writer, that takes care of persisting the objects you create with TDBP.
 
-Since in an integration test case you usually expect everything to be present in the database by the time you reach the point in the test case where you exercises your production, TDDB comes with a writer that persists the objects and data immediately (e.g., the `ExasolImmediateDatabaseObjectWriter`).
+Since in an integration test case you usually expect everything to be present in the database by the time you reach the point in the test case where you exercises your production, TDBP comes with a writer that persists the objects and data immediately (e.g., the `ExasolImmediateDatabaseObjectWriter`).
 
