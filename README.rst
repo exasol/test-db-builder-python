@@ -46,7 +46,7 @@ We recommend to make the object factory a fixture in your integration test and p
 
 .. code-block:: python3
 
-   @pytest.fixture(scope="module")
+    @pytest.fixture(scope="module")
     def connection():
         with connect() as connection:
             yield connection
@@ -73,3 +73,8 @@ With that done, the test preparation gets very compact.
 
         # Assert the results
         # ...
+
+Information for Users
+---------------------
+
+* 📖 `User Guide <docs/user_guide.rst>`_: Detailed instructions on using TDDB including examples and best practices
