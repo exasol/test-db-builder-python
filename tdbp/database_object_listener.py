@@ -3,6 +3,8 @@ from abc import ABC, abstractmethod
 
 from typing import TYPE_CHECKING
 
+from tdbp.table import Table
+
 if TYPE_CHECKING:
     from tdbp.database_object import DatabaseObject
 
@@ -13,5 +15,9 @@ class DatabaseObjectListener(ABC):
         pass
 
     @abstractmethod
-    def on_create(self, object: DatabaseObject) -> None:
+    def on_create(self, database_object: DatabaseObject) -> None:
+        pass
+
+    @abstractmethod
+    def on_insert(self, table: Table, values: list  ):
         pass

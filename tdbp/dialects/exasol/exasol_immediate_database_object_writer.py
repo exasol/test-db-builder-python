@@ -5,7 +5,7 @@ from tdbp.schema import Schema
 from tdbp.dialects.exasol.exasol_connection_factory import connect
 
 
-class ExasolImmediateDatabaseObjectListener(DatabaseObjectListener):
+class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
     def on_create(self, database_object: DatabaseObject) -> None:
         sql = ""
         if isinstance(database_object, Schema):
@@ -15,8 +15,12 @@ class ExasolImmediateDatabaseObjectListener(DatabaseObjectListener):
             column_definitions = [f""""{key}" {value}""" for key, value in database_object.columns.items()]
             sql = f"""CREATE TABLE {database_object.fully_qualified_name()}({", ".join(column_definitions)})"""
         with connect() as connection:
-            print("SQL: " + sql)
             connection.execute(sql)
+            connection.commit()
+
+    def on_insert(self, table: Table, values: list):
+        with connect() as connection:
+            connection.ext.insert_multi((table.schema.name, table.name), [values])
             connection.commit()
 
     def purge_user_objects(self):

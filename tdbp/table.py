@@ -2,10 +2,10 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from tdbp.database_object import DatabaseObject
-from tdbp.database_object_listener import DatabaseObjectListener
 
 if TYPE_CHECKING:
     from tdbp.schema import Schema
+    from tdbp.database_object_listener import DatabaseObjectListener
 
 
 class Table(DatabaseObject):
@@ -16,3 +16,7 @@ class Table(DatabaseObject):
 
     def fully_qualified_name(self) -> str:
         return f'"{self.schema.name}"."{self.name}"'
+
+    def insert(self, *values) -> Table:
+        self.listener.on_insert(self, list(values))
+        return self
