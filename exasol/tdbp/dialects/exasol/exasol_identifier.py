@@ -16,4 +16,5 @@ class ExasolIdentifier:
             raise ValueError(
                 f"Invalid Exasol identifier '{identifier}'. Identifiers must start with a Unicode letter or letter "
                 f"number and can only contain letters, numbers, marks, connectors, formatting codes or the middle dot "
-                f"character.")
+                f"character."
+            )
