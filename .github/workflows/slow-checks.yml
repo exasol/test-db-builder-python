@@ -33,7 +33,7 @@ jobs:
 
       - name: Run Tests and Collect Coverage
         run: |
-          itde spawn-test-environment --enviroment-name tdbp
+          poetry run -- itde spawn-test-environment --enviroment-name tdbp
           poetry run -- nox -s test:integration -- --coverage --db-version ${{ matrix.exasol-version }}
 
       - name: Upload Artifacts
