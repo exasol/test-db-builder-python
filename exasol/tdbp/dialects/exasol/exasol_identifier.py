@@ -2,8 +2,8 @@ import regex
 
 
 class ExasolIdentifier:
-    IDENTIFIER_PATTERN = r"^[\p{Lu}\p{Ll}]\p{Lt}\p{Lm}\p{Lo}\p{Nl}]*"
-    r"[\p{Lu}\p{Ll}\p{Lt}\p{Lm}\p{Lo}\p{Nl}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Cf}\u00B7]*$"
+    IDENTIFIER_PATTERN = r"^[\p{Lu}\p{Ll}\p{Lt}\p{Lm}\p{Lo}\p{Nl}]" \
+                         r"[\p{Lu}\p{Ll}\p{Lt}\p{Lm}\p{Lo}\p{Nl}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Cf}\u00B7]*$"
 
     def __init__(self, identifier: str):
         self.identifier = identifier
