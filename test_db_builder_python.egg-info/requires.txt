@@ -1,0 +1,3 @@
+pytest
+pyexasol
+exasol-integration-test-docker-environment
