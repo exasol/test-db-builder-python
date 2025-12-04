@@ -1,5 +1,7 @@
 import re
+
 import pyexasol
+
 
 class ExasolFingerprintProvider:
     _instance = None
@@ -34,11 +36,13 @@ class ExasolFingerprintProvider:
         except pyexasol.ExaConnectionFailedError as error:
             # Extract fingerprint from error message
             error_str = str(error)
-            print (f"Error message: {error_str}")
-            fingerprint_search = re.search("server fingerprint \[([A-F0-9]+)\]", error_str, re.MULTILINE)
+            print(f"Error message: {error_str}")
+            fingerprint_search = re.search(
+                "server fingerprint \[([A-F0-9]+)\]", error_str, re.MULTILINE
+            )
             if fingerprint_search:
                 self._fingerprint = fingerprint_search.group(1)
-                print (f"Extracted fingerprint: {self._fingerprint}")
+                print(f"Extracted fingerprint: {self._fingerprint}")
             else:
                 raise error
 

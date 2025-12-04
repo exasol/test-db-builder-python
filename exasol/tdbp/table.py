@@ -3,8 +3,9 @@ from __future__ import annotations
 from typing import (
     TYPE_CHECKING,
     Any,
-    override,
 )
+
+from typing_extensions import override
 
 from exasol.tdbp.database_object import DatabaseObject
 
