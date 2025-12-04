@@ -87,6 +87,13 @@ module = [
 ]
 ignore_errors = true
 
+[[tool.mypy.overrides]]
+module = [
+    "pyexasol",
+    "pyexasol.*",
+]
+ignore_missing_imports = true
+
 [tool.sonar]
 projectKey = "com.exasol:test-db-builder-python"
 host.url = "https://sonarcloud.io"
