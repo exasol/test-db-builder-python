@@ -1,11 +1,11 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, Any, override
 
-from tdbp.database_object import DatabaseObject
+from exasol.tdbp.database_object import DatabaseObject
 
 if TYPE_CHECKING:
-    from tdbp.schema import Schema
-    from tdbp.database_object_listener import DatabaseObjectListener
+    from exasol.tdbp.schema import Schema
+    from exasol.tdbp.database_object_listener import DatabaseObjectListener
 
 
 class Table(DatabaseObject):

@@ -1,5 +1,4 @@
-from tdbp.dialects.exasol.exasol_object_factory import ExasolObjectFactory
-from tdbp.dialects.exasol.exasol_connection_factory import connect
+from exasol.tdbp.dialects.exasol.exasol_connection_factory import connect
 
 
 def test_purge_user_objects(factory, db_assert) -> None:

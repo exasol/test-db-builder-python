@@ -1,7 +1,7 @@
 import pyexasol
 from pyexasol import ExaConnection
 
-from tdbp.dialects.exasol.exasol_fingerprint_provider import ExasolFingerprintProvider
+from exasol.tdbp.dialects.exasol.exasol_fingerprint_provider import ExasolFingerprintProvider
 
 
 def connect() -> ExaConnection:

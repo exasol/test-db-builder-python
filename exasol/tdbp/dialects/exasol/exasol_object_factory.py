@@ -1,7 +1,7 @@
 from pyexasol import ExaConnection
 
-from tdbp.dialects.database_object_factory import DatabaseObjectFactory
-from tdbp.dialects.exasol.exasol_immediate_database_object_writer import ExasolImmediateDatabaseObjectWriter
+from exasol.tdbp.dialects.database_object_factory import DatabaseObjectFactory
+from exasol.tdbp.dialects.exasol.exasol_immediate_database_object_writer import ExasolImmediateDatabaseObjectWriter
 
 
 class ExasolObjectFactory(DatabaseObjectFactory):

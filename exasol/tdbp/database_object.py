@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from tdbp.database_object_listener import DatabaseObjectListener
+    from exasol.tdbp.database_object_listener import DatabaseObjectListener
 
 
 class DatabaseObject(ABC):

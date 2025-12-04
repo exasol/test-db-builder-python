@@ -3,10 +3,10 @@ from abc import ABC, abstractmethod
 
 from typing import TYPE_CHECKING
 
-from tdbp.table import Table
+from exasol.tdbp.table import Table
 
 if TYPE_CHECKING:
-    from tdbp.database_object import DatabaseObject
+    from exasol.tdbp.database_object import DatabaseObject
 
 
 class DatabaseObjectListener(ABC):

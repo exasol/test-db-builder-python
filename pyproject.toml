@@ -62,7 +62,7 @@ module = [
 ignore_errors = true
 
 [tool.sonar]
-projectKey = "com.exasol:{{cookiecutter.repo_name}}"
+projectKey = "com.exasol:test-db-builder-python"
 host.url = "https://sonarcloud.io"
 organization = "exasol"
-exclusions = "exasol/{{cookiecutter.package_name}}/version.py"
+exclusions = "exasol/test-db-builder-python/version.py"

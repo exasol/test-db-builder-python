@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import Self, Any
 from types import TracebackType
 
-from tdbp.dialects.exasol.exasol_connection_factory import connect
+from exasol.tdbp.dialects.exasol.exasol_connection_factory import connect
 
 
 class ExasolAssertions:

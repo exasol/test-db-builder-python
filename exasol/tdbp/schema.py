@@ -1,8 +1,8 @@
 from typing import override
 
-from tdbp.database_object import DatabaseObject
-from tdbp.database_object_listener import DatabaseObjectListener
-from tdbp.table import Table
+from exasol.tdbp.database_object import DatabaseObject
+from exasol.tdbp.database_object_listener import DatabaseObjectListener
+from exasol.tdbp.table import Table
 
 
 class Schema(DatabaseObject):
