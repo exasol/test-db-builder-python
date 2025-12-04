@@ -1,10 +1,7 @@
 from __future__ import annotations
 
 from types import TracebackType
-from typing import (
-    Any,
-    Self,
-)
+from typing import Any
 
 import exasol.tdbp.dialects.exasol.exasol_connection_factory
 
@@ -13,7 +10,7 @@ class ExasolAssertions:
     def __init__(self):
         self.connection = None
 
-    def __enter__(self) -> Self:
+    def __enter__(self):
         self.connection = (
             exasol.tdbp.dialects.exasol.exasol_connection_factory.connect()
         )
