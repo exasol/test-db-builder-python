@@ -4446,6 +4446,18 @@ shellingham = ">=1.3.0"
 typing-extensions = ">=3.7.4.3"
 
 [[package]]
+name = "types-regex"
+version = "2025.11.3.20251106"
+description = "Typing stubs for regex"
+optional = false
+python-versions = ">=3.9"
+groups = ["dev"]
+files = [
+    {file = "types_regex-2025.11.3.20251106-py3-none-any.whl", hash = "sha256:bbc37f8c2a81770f81ac8c36857ad81c7c88782ab157803f21de42f3fffc2d89"},
+    {file = "types_regex-2025.11.3.20251106.tar.gz", hash = "sha256:5f9828ed39a5a52727b637f93f7f0f909d56fa2211604ecc213fcebb509b9d50"},
+]
+
+[[package]]
 name = "typing-extensions"
 version = "4.15.0"
 description = "Backported and Experimental Type Hints for Python 3.9+"
@@ -4698,4 +4710,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.15"
-content-hash = "936f2d115cacd7fe6861603c60807063c15bdcd00010b0f0094fd78fca366bbb"
+content-hash = "4abd92be382b35341966e1a8f1203b8ca67ace02efbf1d868f23498162ca425c"
