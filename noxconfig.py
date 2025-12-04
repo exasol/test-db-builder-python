@@ -10,12 +10,7 @@ class Config(BaseConfig):
     root: Path = Path(__file__).parent
     doc: Path = Path(__file__).parent / "doc"
     source: Path = Path("exasol/tdbp")
-    version_file: Path = (
-            Path(__file__).parent
-            / "exasol"
-            / "tdbp"
-            / "version.py"
-    )
+    version_file: Path = Path(__file__).parent / "exasol" / "tdbp" / "version.py"
     plugins: Iterable[object] = ()
 
 PROJECT_CONFIG = Config()
