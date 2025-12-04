@@ -31,9 +31,15 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Start Exasol Test Environment
+        run: |
+          poetry run itde spawn-test-environment \
+            --environment-name test \
+            --database-port-forward 8563 \
+            --bucketfs-port-forward 2580
+
       - name: Run Tests and Collect Coverage
         run: |
-          poetry run -- itde spawn-test-environment --enviroment-name tdbp
           poetry run -- nox -s test:integration -- --coverage --db-version ${{ matrix.exasol-version }}
 
       - name: Upload Artifacts
