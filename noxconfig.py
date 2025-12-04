@@ -11,6 +11,14 @@ class Config(BaseConfig):
     doc: Path = Path(__file__).parent / "doc"
     source: Path = Path("exasol/tdbp")
     version_file: Path = Path(__file__).parent / "exasol" / "tdbp" / "version.py"
+    path_filters: Iterable[str] = (
+        "dist",
+        ".eggs",
+        "venv",
+        ".venv",
+        "build",
+    )
     plugins: Iterable[object] = ()
+
 
 PROJECT_CONFIG = Config()

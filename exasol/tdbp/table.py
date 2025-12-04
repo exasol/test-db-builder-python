@@ -1,11 +1,16 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Any, override
+
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    override,
+)
 
 from exasol.tdbp.database_object import DatabaseObject
 
 if TYPE_CHECKING:
-    from exasol.tdbp.schema import Schema
     from exasol.tdbp.database_object_listener import DatabaseObjectListener
+    from exasol.tdbp.schema import Schema
 
 
 class Table(DatabaseObject):
@@ -19,7 +24,14 @@ class Table(DatabaseObject):
         schema (Schema): The schema to which this table belongs.
         columns (dict): A dictionary defining the columns of the table.
     """
-    def __init__(self, listener: DatabaseObjectListener,  table_name: str, schema: Schema, **columns):
+
+    def __init__(
+        self,
+        listener: DatabaseObjectListener,
+        table_name: str,
+        schema: Schema,
+        **columns,
+    ):
         DatabaseObject.__init__(self, listener, table_name)
         self.schema = schema
         self.columns = columns

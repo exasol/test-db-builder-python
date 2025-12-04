@@ -1,6 +1,9 @@
 from __future__ import annotations
-from abc import ABC, abstractmethod
 
+from abc import (
+    ABC,
+    abstractmethod,
+)
 from typing import TYPE_CHECKING
 
 from exasol.tdbp.table import Table
@@ -20,6 +23,7 @@ class DatabaseObjectListener(ABC):
     The main purpose is to allow different strategies for writing database objects,
     for example, immediately or in batches.
     """
+
     @abstractmethod
     def purge_user_objects(self) -> None:
         """
