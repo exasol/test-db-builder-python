@@ -1,5 +1,5 @@
-Documentation of  {{cookiecutter.project_name}}
-------------------{{ '-' * cookiecutter.project_name | length }}
+Documentation of Test Database Builder for Python
+-------------------------------------------------
 
 .. grid:: 1 1 3 2
     :gutter: 2
