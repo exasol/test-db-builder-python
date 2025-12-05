@@ -25,6 +25,9 @@ class ExasolIdentifier:
     def __init__(self, identifier: str):
         self.identifier = identifier
 
+    def __str__(self):
+        return self.identifier
+
     @staticmethod
     def of(identifier: str):
         """

@@ -6,6 +6,8 @@ from abc import (
 )
 from typing import TYPE_CHECKING
 
+from exasol.tdbp.dialects.exasol.exasol_identifier import ExasolIdentifier
+
 if TYPE_CHECKING:
     from exasol.tdbp.database_object_listener import DatabaseObjectListener
 
@@ -23,7 +25,7 @@ class DatabaseObject(ABC):
     """
 
     def __init__(self, listener: DatabaseObjectListener, name: str):
-        self.name = name
+        self.identifier = ExasolIdentifier.of(name)
         self.listener = listener
 
     @abstractmethod
