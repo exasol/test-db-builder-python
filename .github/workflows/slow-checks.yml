@@ -35,6 +35,7 @@ jobs:
         run: |
           poetry run itde spawn-test-environment \
             --environment-name test \
+            --docker-db-image-version ${{ matrix.exasol-version }} \
             --database-port-forward 8563 \
             --bucketfs-port-forward 2580
 
