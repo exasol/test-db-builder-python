@@ -1,9 +1,15 @@
 from __future__ import annotations
-from abc import ABC, abstractmethod
+
+from abc import (
+    ABC,
+    abstractmethod,
+)
 from typing import TYPE_CHECKING
 
+from exasol.tdbp.dialects.exasol.exasol_identifier import ExasolIdentifier
+
 if TYPE_CHECKING:
-    from tdbp.database_object_listener import DatabaseObjectListener
+    from exasol.tdbp.database_object_listener import DatabaseObjectListener
 
 
 class DatabaseObject(ABC):
@@ -14,13 +20,13 @@ class DatabaseObject(ABC):
     and an associated listener that observes events.
 
     Attributes:
-        name (str): The name of the database object.
         listener (DatabaseObjectListener): The listener that observes this database object.
+        name (str): The name of the database object.
     """
 
     def __init__(self, listener: DatabaseObjectListener, name: str):
-        self.name = name
         self.listener = listener
+        self.identifier = ExasolIdentifier.of(name)
 
     @abstractmethod
     def fully_qualified_name(self) -> str:

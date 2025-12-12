@@ -1,8 +1,8 @@
-from typing import override
+from typing_extensions import override
 
-from tdbp.database_object import DatabaseObject
-from tdbp.database_object_listener import DatabaseObjectListener
-from tdbp.table import Table
+from exasol.tdbp.database_object import DatabaseObject
+from exasol.tdbp.database_object_listener import DatabaseObjectListener
+from exasol.tdbp.table import Table
 
 
 class Schema(DatabaseObject):
@@ -14,13 +14,14 @@ class Schema(DatabaseObject):
         listener (DatabaseObjectListener): Listener object that handles database
             object events.
     """
+
     def __init__(self, listener: DatabaseObjectListener, schema_name: str):
         super().__init__(listener, schema_name)
 
     @override
     def fully_qualified_name(self) -> str:
-        return f'"{self.name}"'
-        
+        return f'"{self.identifier}"'
+
     def create_table(self, table_name: str, **columns):
         """
         Creates a new table with the specified name and columns.

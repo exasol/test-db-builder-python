@@ -1,3 +1,5 @@
+.. _user_guide:
+
 User Guide — Test Database Builder for Python
 =============================================
 
@@ -34,7 +36,7 @@ Using TDBP
 ----------
 
 Preparing Test Fixtures
-----------------------
+-----------------------
 
 TDBP is designed to work with pytest fixtures. You'll need to set up a few basic fixtures to get started:
 
