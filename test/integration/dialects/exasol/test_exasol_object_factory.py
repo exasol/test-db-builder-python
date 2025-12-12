@@ -1,6 +1,3 @@
-import pytest
-
-
 def test_create_schema(factory, db_assert):
     schema = factory.create_schema("CREATE_SCHEMA_TEST")
     (
