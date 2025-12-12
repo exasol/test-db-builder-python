@@ -4,8 +4,8 @@ def test_create_schema(factory, db_assert):
         db_assert.assert_query(
             f"""SELECT "SCHEMA_NAME"
             FROM "SYS"."EXA_DBA_SCHEMAS"
-            WHERE "SCHEMA_NAME" = '{schema.name}'"""
-        ).returns(schema.name)
+            WHERE "SCHEMA_NAME" = '{schema.identifier}'"""
+        ).returns(str(schema.identifier))
     )
 
 
@@ -18,7 +18,7 @@ def test_create_table(factory, db_assert):
         db_assert.assert_query(
             f"""SELECT "COLUMN_NAME", "COLUMN_TYPE"
             FROM "SYS"."EXA_ALL_COLUMNS"
-            WHERE column_schema = '{schema.name}' AND "COLUMN_TABLE" = '{table.name}'"""
+            WHERE column_schema = '{schema.identifier}' AND "COLUMN_TABLE" = '{table.identifier}'"""
         ).returns([("ID", "DECIMAL(12,0)"), ("NAME", "VARCHAR(255) UTF8")])
     )
 
