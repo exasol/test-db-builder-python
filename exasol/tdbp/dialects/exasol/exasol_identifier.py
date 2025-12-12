@@ -47,7 +47,7 @@ class ExasolIdentifier:
         Raises:
             ValueError: If the provided identifier does not comply with the Exasol identifier pattern.
         """
-        if (identifier != None) and regex.match(
+        if (identifier is not None) and regex.match(
             ExasolIdentifier.__IDENTIFIER_PATTERN, identifier, regex.UNICODE
         ):
             return ExasolIdentifier(identifier)

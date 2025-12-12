@@ -23,6 +23,15 @@ def test_create_table(factory, db_assert):
     )
 
 
+def test_fully_qualified_name(factory):
+    schema = factory.create_schema("CREATE_QUALIFIED_NAME_TEST_SCHEMA")
+    table = schema.create_table("CREATE_QUALIFIED_NAME_TEST_TABLE", ID="DECIMAL(12,0)")
+    assert (
+        table.fully_qualified_name()
+        == '"CREATE_QUALIFIED_NAME_TEST_SCHEMA"."CREATE_QUALIFIED_NAME_TEST_TABLE"',
+    )
+
+
 def test_single_row_insert(factory, db_assert):
     schema = factory.create_schema("INSERT_WITH_NAMED_COLUMNS_TEST")
     table = schema.create_table(
@@ -33,7 +42,7 @@ def test_single_row_insert(factory, db_assert):
         db_assert.assert_query(
             f"""SELECT *
             FROM {table.fully_qualified_name()}
-            ORDER BY "ID" ASC"""
+            ORDER BY "ID";"""
         ).returns(1, "Test")
     )
 
@@ -48,7 +57,7 @@ def test_chained_single_row_insert(factory, db_assert):
         db_assert.assert_query(
             f"""SELECT *
             FROM {table.fully_qualified_name()}
-            ORDER BY "ID" ASC"""
+            ORDER BY "ID";"""
         ).returns([(1, "Test"), (2, "Test2")])
     )
 
@@ -63,7 +72,7 @@ def test_multiple_row_insert(factory, db_assert):
         db_assert.assert_query(
             f"""SELECT *
              FROM {table.fully_qualified_name()}
-             ORDER BY "ID" ASC"""
+             ORDER BY "ID";"""
         ).returns([(1, "Test"), (2, "Test2"), (3, "Test3")])
     )
 
@@ -80,7 +89,7 @@ def test_chained_multiple_row_insert(factory, db_assert):
         db_assert.assert_query(
             f"""SELECT *
              FROM {table.fully_qualified_name()}
-             ORDER BY "ID" ASC"""
+             ORDER BY "ID";"""
         ).returns(
             [
                 (1, "Test"),

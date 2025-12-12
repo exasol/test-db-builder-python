@@ -58,7 +58,9 @@ class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
              table (Table): The table where the rows were inserted.
              values (list[list]): A list of lists, where each inner list represents a row.
         """
-        self.connection.ext.insert_multi((table.schema.name, table.name), values)
+        self.connection.ext.insert_multi(
+            (table.schema.identifier, table.identifier), values
+        )
         self.connection.commit()
 
     @override

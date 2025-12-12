@@ -20,13 +20,13 @@ class DatabaseObject(ABC):
     and an associated listener that observes events.
 
     Attributes:
-        name (str): The name of the database object.
         listener (DatabaseObjectListener): The listener that observes this database object.
+        name (str): The name of the database object.
     """
 
     def __init__(self, listener: DatabaseObjectListener, name: str):
-        self.identifier = ExasolIdentifier.of(name)
         self.listener = listener
+        self.identifier = ExasolIdentifier.of(name)
 
     @abstractmethod
     def fully_qualified_name(self) -> str:

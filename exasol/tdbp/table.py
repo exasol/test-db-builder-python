@@ -39,7 +39,7 @@ class Table(DatabaseObject):
 
     @override
     def fully_qualified_name(self) -> str:
-        return f'"{self.schema.name}"."{self.name}"'
+        return f'"{self.schema.identifier}"."{self.identifier}"'
 
     def insert(self, *values: Any) -> Table:
         """

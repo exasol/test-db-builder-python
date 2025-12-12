@@ -20,7 +20,7 @@ class Schema(DatabaseObject):
 
     @override
     def fully_qualified_name(self) -> str:
-        return f'"{self.name}"'
+        return f'"{self.identifier}"'
 
     def create_table(self, table_name: str, **columns):
         """
