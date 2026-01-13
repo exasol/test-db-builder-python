@@ -1,0 +1,5 @@
+[exasol]
+host="localhost"
+port=8653
+user="sys"
+password="exasol"
