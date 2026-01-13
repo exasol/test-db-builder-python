@@ -2,7 +2,7 @@
 name = "test-db-builder-python"
 version = "0.1.0"
 description = "Write compact code to setup up database contents in integration tests"
-requires-python = ">=3.10,<3.15"
+requires-python = ">=3.12,<3.15"
 authors = [
     { name = "Sebastian Bär", email = "sebastian.baer@exasol.com" }
 ]
@@ -33,11 +33,11 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-pyexasol = ">=1.3.0,<2"
+pyexasol = ">=2.0.0,<3"
 regex = ">=2025.11.3"
 
 [tool.poetry.group.dev.dependencies]
-exasol-toolbox =">=3.0.0,<4.0.0"
+exasol-toolbox =">=4.0.0,<5.0.0"
 exasol-integration-test-docker-environment = ">=5.0.0,<6"
 nox = ">=2023.4.22"
 pytest = ">=7.0.0,<9"
@@ -86,14 +86,9 @@ unfixable = []
 [[tool.mypy.overrides]]
 module = [
     "test.*",
+    "pyexasol.*,"
 ]
 ignore_errors = true
-
-[[tool.mypy.overrides]]
-module = [
-    "pyexasol",
-    "pyexasol.*",
-]
 ignore_missing_imports = true
 
 [tool.sonar]

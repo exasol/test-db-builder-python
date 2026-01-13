@@ -31,7 +31,7 @@ class ExasolIdentifier:
     @staticmethod
     def of(identifier: str):
         """
-        Creates an instance of ExasolIdentifier if the provided identifier is valid according to the Exasol SQL
+        Creates an instance of ExasolIdentifier when the provided identifier is valid according to the Exasol SQL
         identifier specification.
 
         The method validates the identifier string against the Exasol identifier rules, ensuring it starts with a Unicode
@@ -42,7 +42,7 @@ class ExasolIdentifier:
                 into an ExasolIdentifier instance.
 
         Returns:
-            ExasolIdentifier: An ExasolIdentifier instance if the identifier is valid.
+            ExasolIdentifier: An ExasolIdentifier instance when the given identifier is valid.
 
         Raises:
             ValueError: If the provided identifier does not comply with the Exasol identifier pattern.
@@ -54,6 +54,6 @@ class ExasolIdentifier:
         else:
             raise ValueError(
                 f"Invalid Exasol identifier '{identifier}'. Identifiers must start with a Unicode letter or letter "
-                f"number and can only contain letters, numbers, marks, connectors, formatting codes or the middle dot "
-                f"character."
+                "number and can only contain letters, numbers, marks, connectors, formatting codes or the middle dot "
+                "character."
             )

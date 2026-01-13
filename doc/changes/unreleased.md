@@ -45,8 +45,8 @@ With that done, the test preparation gets very compact.
 ## Refactoring
 
 * #1: Added MIT license and security policy
-* #3: Transformed project to comply with the standard layout of Exasol's Python projects
+* #3: Transformed project to comply with the standard layout of Exasol's Python projects by adding the Exasol Python Toolbox
 
 ## Features
 
-* Basic support for Exasol
+* #3: Basic support for Exasol

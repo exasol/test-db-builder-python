@@ -1,6 +1,6 @@
 .. _user_guide:
 
-User Guide — Test Database Builder for Python
+User Guide
 =============================================
 
 
