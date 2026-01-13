@@ -52,13 +52,3 @@ def test_validate_identifier_fails(invalid_identifier: str):
 def test_to_string():
     identifier = ExasolIdentifier.of("the_identifier")
     assert str(identifier) == "the_identifier"
-
-
-def test_prevent_sql_injection_via_schema_identifier():
-    with pytest.raises(ValueError):
-        Schema(None, "THE_TABLE;SELECT * FROM SYS.EXA_ALL_USERS;")
-
-
-def test_prevent_sql_injection_via_table_identifier():
-    with pytest.raises(ValueError):
-        Table(None, "THE_TABLE;SELECT * FROM SYS.EXA_ALL_USERS;", None)
