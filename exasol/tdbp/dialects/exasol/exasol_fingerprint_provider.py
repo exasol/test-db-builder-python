@@ -38,7 +38,7 @@ class ExasolFingerprintProvider:
             error_str = str(error)
             print(f"Error message: {error_str}")
             fingerprint_search = re.search(
-                "server fingerprint \[([A-F0-9]+)\]", error_str, re.MULTILINE
+                r"server fingerprint \[([A-F0-9]+)\]", error_str, re.MULTILINE
             )
             if fingerprint_search:
                 self._fingerprint = fingerprint_search.group(1)

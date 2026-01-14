@@ -1,4 +1,4 @@
-from typing_extensions import override
+from typing import override
 
 from exasol.tdbp.database_object import DatabaseObject
 from exasol.tdbp.database_object_listener import DatabaseObjectListener
