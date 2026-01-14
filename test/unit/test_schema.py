@@ -1,4 +1,5 @@
 import pytest
+
 from exasol.tdbp.schema import Schema
 
 

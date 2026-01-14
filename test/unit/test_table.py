@@ -1,4 +1,5 @@
 import pytest
+
 from exasol.tdbp.table import Table
 
 

@@ -1,4 +1,5 @@
 from test.conftest import PROJECT_ROOT
+
 from exasol.tdbp.tdbp_config import TddbConfig
 
 

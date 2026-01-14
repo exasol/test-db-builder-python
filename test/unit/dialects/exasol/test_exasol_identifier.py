@@ -1,8 +1,6 @@
 import pytest
 
 from exasol.tdbp.dialects.exasol.exasol_identifier import ExasolIdentifier
-from exasol.tdbp.schema import Schema
-from exasol.tdbp.table import Table
 
 
 @pytest.mark.parametrize(
