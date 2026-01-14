@@ -22,7 +22,10 @@ class Table(DatabaseObject):
     defining columns, and provides methods for inserting records into the table.
 
     Attributes:
+        listener (DatabaseObjectListener): Listener object that handles database
+            object events.
         schema (Schema): The schema to which this table belongs.
+        table_name (str): The name of the table.
         columns (dict): A dictionary defining the columns of the table.
     """
 

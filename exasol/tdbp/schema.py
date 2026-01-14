@@ -10,9 +10,9 @@ class Schema(DatabaseObject):
     Represents a database schema.
 
     Attributes:
-        name (str): The name of the schema as defined when creating the instance.
         listener (DatabaseObjectListener): Listener object that handles database
             object events.
+        schema_name (str): The name of the schema as defined when creating the instance.
     """
 
     def __init__(self, listener: DatabaseObjectListener, schema_name: str):
