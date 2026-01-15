@@ -11,25 +11,25 @@ repos:
         entry: poetry run -- nox -s project:format
         stages: [ pre-commit ]
 
-#  - repo: local
-#    hooks:
-#      - id: type-check
-#        name: type-check
-#        types: [ python ]
-#        pass_filenames: false
-#        language: system
-#        entry: poetry run -- nox -s project:type-check
-#        stages: [ pre-push ]
-#
-#  - repo: local
-#    hooks:
-#      - id: lint
-#        name: lint
-#        types: [ python ]
-#        pass_filenames: false
-#        language: system
-#        entry: poetry run -- nox -s project:lint
-#        stages: [ pre-push ]
+  - repo: local
+    hooks:
+      - id: type-check
+        name: type-check
+        types: [ python ]
+        pass_filenames: false
+        language: system
+        entry: poetry run -- nox -s format:fix
+        stages: [ pre-push ]
+
+  - repo: local
+    hooks:
+      - id: lint
+        name: lint
+        types: [ python ]
+        pass_filenames: false
+        language: system
+        entry: poetry run -- nox -s lint:typing
+        stages: [ pre-push ]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0

@@ -160,7 +160,7 @@ jobs:
         uses: exasol/python-toolbox/.github/actions/python-environment@v4
 
       - name: Run format check
-        run: poetry run -- nox -s project:format
+        run: poetry run -- nox -s format:fix
 
   Build-Packages:
     name: Build Package Check
