@@ -22,6 +22,8 @@ jobs:
 
       - name: Check Version(s)
         run: poetry run -- nox -s version:check
+        with:
+          python-version: 3.12
 
   Documentation:
     name: Docs
