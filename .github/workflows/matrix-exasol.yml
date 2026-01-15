@@ -18,6 +18,8 @@ jobs:
 
       - name: Setup Python & Poetry Environment
         uses: exasol/python-toolbox/.github/actions/python-environment@v4
+        with:
+          python-version: 3.12
 
       - name: Generate matrix
         run: poetry run -- nox -s matrix:exasol
