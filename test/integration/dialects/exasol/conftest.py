@@ -1,8 +1,9 @@
+from test.integration.dialects.exasol.exasol_assertions import ExasolAssertions
+
 import pytest
 
-from tdbp.dialects.exasol.exasol_connection_factory import connect
-from tdbp.dialects.exasol.exasol_object_factory import ExasolObjectFactory
-from test.integration.dialects.exasol.exasol_assertions import ExasolAssertions
+from exasol.tdbp.dialects.exasol.exasol_connection_factory import connect
+from exasol.tdbp.dialects.exasol.exasol_object_factory import ExasolObjectFactory
 
 
 @pytest.fixture

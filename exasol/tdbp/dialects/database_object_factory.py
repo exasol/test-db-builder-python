@@ -1,5 +1,5 @@
-from tdbp.database_object_listener import DatabaseObjectListener
-from tdbp.schema import Schema
+from exasol.tdbp.database_object_listener import DatabaseObjectListener
+from exasol.tdbp.schema import Schema
 
 
 class DatabaseObjectFactory:

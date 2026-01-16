@@ -1,23 +1,27 @@
 from __future__ import annotations
-from typing import Self, Any
-from types import TracebackType
 
-from tdbp.dialects.exasol.exasol_connection_factory import connect
+from types import TracebackType
+from typing import Any
+
+import exasol.tdbp.dialects.exasol.exasol_connection_factory
 
 
 class ExasolAssertions:
     def __init__(self):
         self.connection = None
 
-    def __enter__(self) -> Self:
-        self.connection = connect()
+    def __enter__(self):
+        self.connection = (
+            exasol.tdbp.dialects.exasol.exasol_connection_factory.connect()
+        )
         return self
 
-    def __exit__(self,
-                 exc_type: type[BaseException] | None,
-                 exc_val: BaseException | None,
-                 exc_tb: TracebackType | None
-                 ) -> bool:
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
+    ) -> bool:
         if self.connection:
             self.connection.close()
         return False

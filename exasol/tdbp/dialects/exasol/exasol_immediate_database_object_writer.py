@@ -1,10 +1,10 @@
 from pyexasol import ExaConnection
 from typing_extensions import override
 
-from tdbp.database_object import DatabaseObject
-from tdbp.database_object_listener import DatabaseObjectListener
-from tdbp.table import Table
-from tdbp.schema import Schema
+from exasol.tdbp.database_object import DatabaseObject
+from exasol.tdbp.database_object_listener import DatabaseObjectListener
+from exasol.tdbp.schema import Schema
+from exasol.tdbp.table import Table
 
 
 class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
@@ -31,7 +31,9 @@ class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
             sql = f"""CREATE SCHEMA {database_object.fully_qualified_name()};"""
         elif isinstance(database_object, Table):
             print(f"Columns: {database_object.columns}")
-            column_definitions = [f""""{key}" {value}""" for key, value in database_object.columns.items()]
+            column_definitions = [
+                f""""{key}" {value}""" for key, value in database_object.columns.items()
+            ]
             sql = f"""CREATE TABLE {database_object.fully_qualified_name()}({", ".join(column_definitions)})"""
         self.connection.execute(sql)
         self.connection.commit()
@@ -56,7 +58,9 @@ class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
              table (Table): The table where the rows were inserted.
              values (list[list]): A list of lists, where each inner list represents a row.
         """
-        self.connection.ext.insert_multi((table.schema.name, table.name), values)
+        self.connection.ext.insert_multi(
+            (table.schema.identifier, table.identifier), values
+        )
         self.connection.commit()
 
     @override
@@ -71,7 +75,9 @@ class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
         System objects in Exasol are, for example, all tables and views in the SYS schema.
         Those are not touched by this method.
         """
-        with self.connection.execute("SELECT schema_name FROM sys.exa_dba_schemas") as statement:
+        with self.connection.execute(
+            "SELECT schema_name FROM sys.exa_dba_schemas"
+        ) as statement:
             for row in statement:
                 self.connection.execute(f"DROP SCHEMA {row[0]} CASCADE")
             self.connection.commit()

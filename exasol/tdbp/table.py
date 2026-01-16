@@ -1,11 +1,17 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Any, override
 
-from tdbp.database_object import DatabaseObject
+from typing import (
+    TYPE_CHECKING,
+    Any,
+)
+
+from typing_extensions import override
+
+from exasol.tdbp.database_object import DatabaseObject
 
 if TYPE_CHECKING:
-    from tdbp.schema import Schema
-    from tdbp.database_object_listener import DatabaseObjectListener
+    from exasol.tdbp.database_object_listener import DatabaseObjectListener
+    from exasol.tdbp.schema import Schema
 
 
 class Table(DatabaseObject):
@@ -16,17 +22,27 @@ class Table(DatabaseObject):
     defining columns, and provides methods for inserting records into the table.
 
     Attributes:
+        listener (DatabaseObjectListener): Listener object that handles database
+            object events.
         schema (Schema): The schema to which this table belongs.
+        table_name (str): The name of the table.
         columns (dict): A dictionary defining the columns of the table.
     """
-    def __init__(self, listener: DatabaseObjectListener,  table_name: str, schema: Schema, **columns):
+
+    def __init__(
+        self,
+        listener: DatabaseObjectListener,
+        table_name: str,
+        schema: Schema,
+        **columns,
+    ):
         DatabaseObject.__init__(self, listener, table_name)
         self.schema = schema
         self.columns = columns
 
     @override
     def fully_qualified_name(self) -> str:
-        return f'"{self.schema.name}"."{self.name}"'
+        return f'"{self.schema.identifier}"."{self.identifier}"'
 
     def insert(self, *values: Any) -> Table:
         """

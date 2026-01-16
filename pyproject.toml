@@ -2,13 +2,99 @@
 name = "test-db-builder-python"
 version = "0.1.0"
 description = "Write compact code to setup up database contents in integration tests"
+requires-python = ">=3.12,<3.14"
 authors = [
     { name = "Sebastian Bär", email = "sebastian.baer@exasol.com" }
 ]
+readme = "README.rst"
+license = "MIT"
+dynamic = ["classifiers", "dependencies"]
 
-dependencies = [
-    "pytest",
-    "pyexasol",
-    # Move the following to test dependencies
-    "exasol-integration-test-docker-environment"
+[poetry.urls]
+Homepage = "https://www.exasol.com/"
+Documentation = "https://exasol.github.io/test-db-builder-python/"
+Source = "https://github.com/exasol/test-db-builder-python"
+Issues = "https://github.com/exasol/test-db-builder-python/issues"
+Changelog = "https://exasol.github.io/test-db-builder-python/changelog.html"
+
+[tool.poetry]
+requires-poetry = ">=2.1.0"
+packages = [
+    { include = "exasol" },
 ]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: Developers",
+    "Topic :: Database",
+]
+
+[tool.poetry.dependencies]
+pyexasol = ">=2.0.0,<3"
+regex = ">=2025.11.3"
+[tool.poetry.group.dev.dependencies]
+exasol-toolbox =">=4.0.0,<5.0.0"
+exasol-integration-test-docker-environment = ">=5.0.0,<6"
+nox = ">=2023.4.22"
+pytest = ">=7.0.0,<9"
+
+types-regex = ">=2025.11"
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.run]
+relative_files = true
+source = [
+    "exasol",
+]
+
+[tool.coverage.report]
+fail_under = 15
+
+[tool.black]
+line-length = 88
+verbose = false
+include = "\\.pyi?$"
+
+[tool.isort]
+profile = "black"
+force_grid_wrap = 2
+
+[tool.pylint.master]
+fail-under = 5.0
+ignore = []
+
+[tool.pylint.format]
+max-line-length = 88
+max-module-lines = 800
+
+[tool.ruff.lint]
+extend-ignore = [
+    "E",      # Syntax errors
+    "F",      # Pyflakes rules (excluding F401)
+    "UP",     # pyupgrade rules
+    "D",      # Docstring rules
+]
+extend-select = ["F401"]
+unfixable = []
+
+[[tool.mypy.overrides]]
+module = [
+    "test.*",
+    "pyexasol.*,"
+]
+ignore_errors = true
+ignore_missing_imports = true
+
+[tool.sonar]
+projectKey = "com.exasol:test-db-builder-python"
+host.url = "https://sonarcloud.io"
+organization = "exasol"
+exclusions = "exasol/test-db-builder-python/version.py"
+
+
