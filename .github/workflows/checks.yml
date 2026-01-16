@@ -180,6 +180,8 @@ jobs:
 
       - name: Setup Python & Poetry Environment
         uses: exasol/python-toolbox/.github/actions/python-environment@v4
+        with:
+          python-version: 3.12
 
       - name: Run Distribution Check
         run: poetry run -- nox -s package:check
