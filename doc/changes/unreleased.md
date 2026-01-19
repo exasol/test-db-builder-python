@@ -46,6 +46,7 @@ With that done, the test preparation gets very compact.
 
 * #1: Added MIT license and security policy
 * #3: Transformed project to comply with the standard layout of Exasol's Python projects by adding the Exasol Python Toolbox
+* #12: Removed unused `Config` class from `noxconfig.py`
 
 ## Features
 

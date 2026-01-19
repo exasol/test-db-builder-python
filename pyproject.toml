@@ -86,7 +86,6 @@ unfixable = []
 [[tool.mypy.overrides]]
 module = [
     "test.*",
-    "pyexasol.*,"
 ]
 ignore_errors = true
 ignore_missing_imports = true
@@ -96,5 +95,3 @@ projectKey = "com.exasol:test-db-builder-python"
 host.url = "https://sonarcloud.io"
 organization = "exasol"
 exclusions = "exasol/test-db-builder-python/version.py"
-
-
