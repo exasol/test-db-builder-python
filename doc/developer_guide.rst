@@ -21,4 +21,7 @@ Exasol Integration Tests
 
 For the Exasol dialect, the project uses the `integration-test-docker-environment` (ITDE_) which starts Exasol in a docker container and creates a docker network with a second docker container in which the tests run.
 
-.. _ITDE: https://github.com/exasol/integration-test-docker-environment
+The `pytest-exasol-backend` serves as an abstraction, so that we do not have to start the ITDE by hand. This project only tests against the on-prem backend (read: `docker-db`).
+
+.. _ITDE: https://github.com/exasol/integration-test-docker-environment/
+.. _PEB: https://github.com/exasol/pytest-backend/
