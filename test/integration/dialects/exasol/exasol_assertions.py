@@ -1,19 +1,16 @@
 from __future__ import annotations
 
+import pyexasol
+
 from types import TracebackType
 from typing import Any
 
-import exasol.tdbp.dialects.exasol.exasol_connection_factory
-
 
 class ExasolAssertions:
-    def __init__(self):
-        self.connection = None
+    def __init__(self, connection: pyexasol.ExaConnection):
+        self.connection = connection
 
     def __enter__(self):
-        self.connection = (
-            exasol.tdbp.dialects.exasol.exasol_connection_factory.connect()
-        )
         return self
 
     def __exit__(

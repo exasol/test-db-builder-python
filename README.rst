@@ -44,13 +44,10 @@ Quick Start
 
 We recommend to make the object factory a fixture in your integration test and purge the database before each test. This ensures test isolation.
 
+The object factory needs a database connection. In case of the Exasol dialect, the `pytest-exasol-backend` (https://github.com/exasol/pytest-backend) makes creating an Exasol backend and getting a connection very convenient.
+
 .. code-block:: python3
 
-    @pytest.fixture(scope="module")
-    def connection():
-        with connect() as connection:
-            yield connection
-    
     @pytest.fixture
     def factory(connection):
         factory = ExasolObjectFactory(connection)

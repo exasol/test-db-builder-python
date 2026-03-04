@@ -1126,46 +1126,70 @@ simplejson = ">=3.16.0"
 "stopwatch.py" = ">=1.0.0"
 
 [[package]]
+name = "exasol-saas-api"
+version = "2.8.0"
+description = "API enabling Python applications connecting to Exasol database SaaS instances and using their SaaS services"
+optional = false
+python-versions = "<4.0,>=3.10.0"
+groups = ["dev"]
+files = [
+    {file = "exasol_saas_api-2.8.0-py3-none-any.whl", hash = "sha256:fa2628e7d058f0a378d880c55ec36155507c326daa013ee33ec2d75773290998"},
+    {file = "exasol_saas_api-2.8.0.tar.gz", hash = "sha256:7cc31f01737749f464b9032d14631a5e4189f006021197a201b1786740ead238"},
+]
+
+[package.dependencies]
+attrs = ">=22.2.0"
+httpx = ">=0.23.0"
+ifaddr = ">=0.2.0,<0.3.0"
+python-dateutil = ">=2.8.0,<3.0.0"
+requests = ">=2.32.4,<3.0.0"
+tenacity = ">=8.2.3,<9.0.0"
+types-requests = ">=2.31.0.6,<3.0.0.0"
+
+[[package]]
 name = "exasol-toolbox"
-version = "4.0.1"
+version = "6.0.0"
 description = "Your one-stop solution for managing all standard tasks and core workflows of your Python project."
 optional = false
 python-versions = "<4.0,>=3.10"
 groups = ["dev"]
 files = [
-    {file = "exasol_toolbox-4.0.1-py3-none-any.whl", hash = "sha256:5b4179ba6936bf8d4e63570846ecede381f9db79539752438ea120a7b0fa3df0"},
-    {file = "exasol_toolbox-4.0.1.tar.gz", hash = "sha256:0e180289f23e0f562aefa890ffb6cd35099f99aedda2d2735faf762263dd50f6"},
+    {file = "exasol_toolbox-6.0.0-py3-none-any.whl", hash = "sha256:327a743938fb4fd78701068480ed5bda9f466b434de769a251f6294647e3ec92"},
+    {file = "exasol_toolbox-6.0.0.tar.gz", hash = "sha256:cac9f5b847feaf53a3808f14ba2ebc03a533865aa3c1ea7754c14c001e8945e5"},
 ]
 
 [package.dependencies]
-bandit = {version = ">=1.7.9,<2.0.0", extras = ["toml"]}
+bandit = {version = ">=1.7.9,<2", extras = ["toml"]}
 black = ">=24.1.0,<26"
 coverage = ">=6.4.4,<8.0.0"
 furo = ">=2022.9.15"
-import-linter = ">=2.0,<3.0"
+import-linter = ">=2.0,<3"
 importlib-resources = ">=5.12.0"
-isort = ">=7.0.0,<8.0.0"
-jinja2 = ">=3.1.6,<4.0.0"
+isort = ">=7.0.0,<8"
+jinja2 = ">=3.1.6,<4"
 mypy = ">=0.971"
 myst-parser = ">=2.0.0,<4"
 nox = ">=2022.8.7"
-pip-audit = ">=2.7.3,<3.0.0"
-pip-licenses = ">=5.0.0,<6.0.0"
-pluggy = ">=1.5.0,<2.0.0"
+pip-audit = ">=2.7.3,<3"
+pip-licenses = ">=5.0.0,<6"
+pluggy = ">=1.5.0,<2"
 pre-commit = ">=4,<5"
-pydantic = ">=2.11.5,<3.0.0"
+pydantic = ">=2.11.5,<3"
 pylint = ">=2.15.4"
-pysonar = ">=1.0.1.1548,<2.0.0.0"
+pysonar = ">=1.0.1.1548,<2"
 pytest = ">=7.2.2,<10"
 pyupgrade = ">=2.38.2,<4.0.0"
-ruff = ">=0.14.5,<0.15.0"
+ruamel-yaml = ">=0.18.0,<=0.18.16"
+ruff = ">=0.14.5,<0.15"
 shibuya = ">=2024.5.14"
 sphinx = ">=5.3,<8"
-sphinx-copybutton = ">=0.5.0,<0.6.0"
+sphinx-copybutton = ">=0.5.0,<0.6"
 sphinx-design = ">=0.5.0,<1"
-sphinx-inline-tabs = ">=2023.4.21,<2024.0.0"
-sphinx-toolbox = ">=4.0.0,<5.0.0"
-twine = ">=6.1.0,<7.0.0"
+sphinx-inline-tabs = ">=2023.4.21,<2024"
+sphinx-toolbox = ">=4.0.0,<5"
+sphinxcontrib-mermaid = ">=2.0.0,<3.0.0"
+structlog = ">=25.5.0,<26.0.0"
+twine = ">=6.1.0,<7"
 typer = {version = ">=0.7.0", extras = ["all"]}
 
 [[package]]
@@ -1431,6 +1455,53 @@ genshi = ["genshi"]
 lxml = ["lxml ; platform_python_implementation == \"CPython\""]
 
 [[package]]
+name = "httpcore"
+version = "1.0.9"
+description = "A minimal low-level HTTP client."
+optional = false
+python-versions = ">=3.8"
+groups = ["dev"]
+files = [
+    {file = "httpcore-1.0.9-py3-none-any.whl", hash = "sha256:2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55"},
+    {file = "httpcore-1.0.9.tar.gz", hash = "sha256:6e34463af53fd2ab5d807f399a9b45ea31c3dfa2276f15a2c3f00afff6e176e8"},
+]
+
+[package.dependencies]
+certifi = "*"
+h11 = ">=0.16"
+
+[package.extras]
+asyncio = ["anyio (>=4.0,<5.0)"]
+http2 = ["h2 (>=3,<5)"]
+socks = ["socksio (==1.*)"]
+trio = ["trio (>=0.22.0,<1.0)"]
+
+[[package]]
+name = "httpx"
+version = "0.28.1"
+description = "The next generation HTTP client."
+optional = false
+python-versions = ">=3.8"
+groups = ["dev"]
+files = [
+    {file = "httpx-0.28.1-py3-none-any.whl", hash = "sha256:d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad"},
+    {file = "httpx-0.28.1.tar.gz", hash = "sha256:75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc"},
+]
+
+[package.dependencies]
+anyio = "*"
+certifi = "*"
+httpcore = "==1.*"
+idna = "*"
+
+[package.extras]
+brotli = ["brotli ; platform_python_implementation == \"CPython\"", "brotlicffi ; platform_python_implementation != \"CPython\""]
+cli = ["click (==8.*)", "pygments (==2.*)", "rich (>=10,<14)"]
+http2 = ["h2 (>=3,<5)"]
+socks = ["socksio (==1.*)"]
+zstd = ["zstandard (>=0.18.0)"]
+
+[[package]]
 name = "humanfriendly"
 version = "10.0"
 description = "Human friendly output for text interfaces using Python"
@@ -1511,15 +1582,27 @@ files = [
 all = ["flake8 (>=7.1.1)", "mypy (>=1.11.2)", "pytest (>=8.3.2)", "ruff (>=0.6.2)"]
 
 [[package]]
-name = "imagesize"
-version = "1.4.1"
-description = "Getting image size from png/jpeg/jpeg2000/gif file"
+name = "ifaddr"
+version = "0.2.0"
+description = "Cross-platform network interface and IP address enumeration library"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = "*"
 groups = ["dev"]
 files = [
-    {file = "imagesize-1.4.1-py2.py3-none-any.whl", hash = "sha256:0d8d18d08f840c19d0ee7ca1fd82490fdc3729b7ac93f49870406ddde8ef8d8b"},
-    {file = "imagesize-1.4.1.tar.gz", hash = "sha256:69150444affb9cb0d5cc5a92b3676f0b2fb7cd9ae39e947a5e11a36b4497cd4a"},
+    {file = "ifaddr-0.2.0-py3-none-any.whl", hash = "sha256:085e0305cfe6f16ab12d72e2024030f5d52674afad6911bb1eee207177b8a748"},
+    {file = "ifaddr-0.2.0.tar.gz", hash = "sha256:cc0cbfcaabf765d44595825fb96a99bb12c79716b73b44330ea38ee2b0c4aed4"},
+]
+
+[[package]]
+name = "imagesize"
+version = "1.5.0"
+description = "Getting image size from png/jpeg/jpeg2000/gif file"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
+groups = ["dev"]
+files = [
+    {file = "imagesize-1.5.0-py2.py3-none-any.whl", hash = "sha256:32677681b3f434c2cb496f00e89c5a291247b35b1f527589909e008057da5899"},
+    {file = "imagesize-1.5.0.tar.gz", hash = "sha256:8bfc5363a7f2133a89f0098451e0bcb1cd71aba4dc02bbcecb39d99d40e1b94f"},
 ]
 
 [[package]]
@@ -3065,6 +3148,23 @@ pygments = ">=2.7.2"
 dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "requests", "setuptools", "xmlschema"]
 
 [[package]]
+name = "pytest-exasol-backend"
+version = "1.3.0"
+description = ""
+optional = false
+python-versions = "<3.14,>=3.10"
+groups = ["dev"]
+files = [
+    {file = "pytest_exasol_backend-1.3.0-py3-none-any.whl", hash = "sha256:cd38f3061cb101d22376c64ba712058b0171d954999bc546a59767c38be760d0"},
+    {file = "pytest_exasol_backend-1.3.0.tar.gz", hash = "sha256:d24544c6a9e25c2e3e4ca45bba412654a0a012e43bf6f4e93edd96d05b493e91"},
+]
+
+[package.dependencies]
+exasol-integration-test-docker-environment = ">=4.3,<7"
+exasol-saas-api = ">=2.8,<3"
+pytest = ">=7,<9"
+
+[[package]]
 name = "python-daemon"
 version = "3.1.2"
 description = "Library to implement a well-behaved Unix daemon process."
@@ -4210,6 +4310,26 @@ files = [
 test = ["flake8", "mypy", "pytest"]
 
 [[package]]
+name = "sphinxcontrib-mermaid"
+version = "2.0.0"
+description = "Mermaid diagrams in your Sphinx-powered docs"
+optional = false
+python-versions = ">=3.10"
+groups = ["dev"]
+files = [
+    {file = "sphinxcontrib_mermaid-2.0.0-py3-none-any.whl", hash = "sha256:59a73249bbee2c74b1a4db036f8e8899ade65982bdda6712cf22b4f4e9874bb5"},
+    {file = "sphinxcontrib_mermaid-2.0.0.tar.gz", hash = "sha256:cf4f7d453d001132eaba5d1fdf53d42049f02e913213cf8337427483bfca26f4"},
+]
+
+[package.dependencies]
+jinja2 = "*"
+pyyaml = "*"
+sphinx = "*"
+
+[package.extras]
+test = ["defusedxml", "myst-parser", "pytest", "ruff", "sphinx"]
+
+[[package]]
 name = "sphinxcontrib-qthelp"
 version = "2.0.0"
 description = "sphinxcontrib-qthelp is a sphinx extension which outputs QtHelp documents"
@@ -4297,6 +4417,18 @@ groups = ["dev"]
 files = [
     {file = "stopwatch.py-2.0.1-py3-none-any.whl", hash = "sha256:5802a0178d766120c11dd5df8ae838e9beccb8c88329dbd5f0f7ac4b7fed9107"},
     {file = "stopwatch.py-2.0.1.tar.gz", hash = "sha256:8cc94ba0f6469d434eabd8b227166e595fd42350e7f66dbf1a1a80697f60cc79"},
+]
+
+[[package]]
+name = "structlog"
+version = "25.5.0"
+description = "Structured Logging for Python"
+optional = false
+python-versions = ">=3.8"
+groups = ["dev"]
+files = [
+    {file = "structlog-25.5.0-py3-none-any.whl", hash = "sha256:a8453e9b9e636ec59bd9e79bbd4a72f025981b3ba0f5837aebf48f02f37a7f9f"},
+    {file = "structlog-25.5.0.tar.gz", hash = "sha256:098522a3bebed9153d4570c6d0288abf80a031dfdb2048d59a49e9dc2190fc98"},
 ]
 
 [[package]]
@@ -4485,6 +4617,21 @@ files = [
     {file = "types_regex-2026.2.28.20260301-py3-none-any.whl", hash = "sha256:7da7a1fe67528238176a5844fd435ca90617cf605341308686afbc579fdea5c0"},
     {file = "types_regex-2026.2.28.20260301.tar.gz", hash = "sha256:644c231db3f368908320170c14905731a7ae5fabdac0f60f5d6d12ecdd3bc8dd"},
 ]
+
+[[package]]
+name = "types-requests"
+version = "2.32.4.20260107"
+description = "Typing stubs for requests"
+optional = false
+python-versions = ">=3.9"
+groups = ["dev"]
+files = [
+    {file = "types_requests-2.32.4.20260107-py3-none-any.whl", hash = "sha256:b703fe72f8ce5b31ef031264fe9395cac8f46a04661a79f7ed31a80fb308730d"},
+    {file = "types_requests-2.32.4.20260107.tar.gz", hash = "sha256:018a11ac158f801bfa84857ddec1650750e393df8a004a8a9ae2a9bec6fcb24f"},
+]
+
+[package.dependencies]
+urllib3 = ">=2"
 
 [[package]]
 name = "typing-extensions"
@@ -4699,4 +4846,4 @@ dev = ["pytest", "setuptools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.14"
-content-hash = "fcc80a8ecdf452f9b41ff22939175e3555efa8d72f0a0d85ca76cf0c1753f0e3"
+content-hash = "3e2d1cbfa81e56dcc424cc099cdedbd0e9609626a70dc7f3b5af5360d6a6d6df"
