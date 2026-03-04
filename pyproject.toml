@@ -1,6 +1,6 @@
 [project]
 name = "test-db-builder-python"
-version = "0.1.0"
+version = "1.0.0"
 description = "Write compact code to setup up database contents in integration tests"
 requires-python = ">=3.12,<3.14"
 authors = [
