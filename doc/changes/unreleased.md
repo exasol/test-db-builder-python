@@ -17,4 +17,4 @@ Please note that the situation on the user's machine can differ, since they have
 
 ## Security
 
-* # Fixed security issues in by updating the dependencies listed above.
+* #23: Fixed security issues in by updating the dependencies listed above.
