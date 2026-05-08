@@ -40,7 +40,6 @@ packages = [ {include = "exasol"}, ]
 [dependency-groups]
 dev = [
     "exasol-integration-test-docker-environment>=5.0.0,<6",
-    "requests>=2.33.1, <3",
     "exasol-toolbox>=7, <8",
     "pytest>=7.0.0,<9",
     "pytest-exasol-backend>=1.3.0,<2",
