@@ -1,9 +1,7 @@
 from test.integration.dialects.exasol.exasol_assertions import ExasolAssertions
 
-import pytest
 import pyexasol
-
-from exasol.pytest_backend import backend_aware_database_params
+import pytest
 
 from exasol.tdbp.dialects.exasol.exasol_object_factory import ExasolObjectFactory
 

@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-import pyexasol
-
 from types import TracebackType
 from typing import Any
+
+import pyexasol
 
 
 class ExasolAssertions:
