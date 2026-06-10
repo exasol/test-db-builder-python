@@ -36,7 +36,6 @@ Changelog = "https://exasol.github.io/test-db-builder-python/changelog.html"
 requires-poetry = ">=2.3.0"
 packages = [ {include = "exasol"}, ]
 
-
 [dependency-groups]
 dev = [
     "exasol-integration-test-docker-environment>=5.0.0,<7",
