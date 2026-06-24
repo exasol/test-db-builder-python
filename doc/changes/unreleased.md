@@ -10,3 +10,4 @@
 ## Refactoring
 
 * #27: Updated to exasol-toolbox 8.2.0
+* #30: Updated to exasol-toolbox 10.0.0
