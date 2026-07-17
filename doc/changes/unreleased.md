@@ -2,6 +2,8 @@
 
 ## Summary
 
+In this release we fixed integration test and therefore code coverage reporting in CI. The switch `--backend onprem` was missing from slow tests, causing integration tests to be skipped.
+
 ## Security Issues
 
 * #23: Fixed security issues by updating dependencies

@@ -28,7 +28,7 @@ def test_fully_qualified_name(factory):
     table = schema.create_table("CREATE_QUALIFIED_NAME_TEST_TABLE", ID="DECIMAL(12,0)")
     assert (
         table.fully_qualified_name()
-        == '"CREATE_QUALIFIED_NAME_TEST_SCHEMA"."CREATE_QUALIFIED_NAME_TEST_TABLE"',
+        == '"CREATE_QUALIFIED_NAME_TEST_SCHEMA"."CREATE_QUALIFIED_NAME_TEST_TABLE"'
     )
 
 
