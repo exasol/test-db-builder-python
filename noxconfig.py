@@ -8,5 +8,5 @@ PROJECT_CONFIG = BaseConfig(
     project_name="tdbp",
     root_path=Path(__file__).parent,
     python_versions=("3.12", "3.13"),
-    exasol_versions=("2025.1.8",),
+    exasol_versions=("2026.0.1",),
 )

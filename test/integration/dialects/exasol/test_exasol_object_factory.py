@@ -26,10 +26,8 @@ def test_create_table(factory, db_assert):
 def test_fully_qualified_name(factory):
     schema = factory.create_schema("CREATE_QUALIFIED_NAME_TEST_SCHEMA")
     table = schema.create_table("CREATE_QUALIFIED_NAME_TEST_TABLE", ID="DECIMAL(12,0)")
-    assert (
-        table.fully_qualified_name()
-        == '"CREATE_QUALIFIED_NAME_TEST_SCHEMA"."CREATE_QUALIFIED_NAME_TEST_TABLE"',
-    )
+    assert table.fully_qualified_name() == '"CREATE_QUALIFIED_NAME_TEST_SCHEMA"."CREATE_QUALIFIED_NAME_TEST_TABLE"'
+
 
 
 def test_single_row_insert(factory, db_assert):
