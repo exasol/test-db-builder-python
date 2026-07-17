@@ -1,3 +1,5 @@
+from typing import override
+
 from exasol.tdbp.database_object import DatabaseObject
 from exasol.tdbp.database_object_listener import DatabaseObjectListener
 from exasol.tdbp.table import Table
@@ -16,6 +18,7 @@ class Schema(DatabaseObject):
     def __init__(self, listener: DatabaseObjectListener, schema_name: str):
         super().__init__(listener, schema_name)
 
+    @override
     def fully_qualified_name(self) -> str:
         return f'"{self.identifier}"'
 

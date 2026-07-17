@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import (
     TYPE_CHECKING,
     Any,
+    override,
 )
 
 from exasol.tdbp.database_object import DatabaseObject
@@ -38,6 +39,7 @@ class Table(DatabaseObject):
         self.schema = schema
         self.columns = columns
 
+    @override
     def fully_qualified_name(self) -> str:
         return f'"{self.schema.identifier}"."{self.identifier}"'
 

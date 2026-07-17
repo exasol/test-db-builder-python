@@ -1,3 +1,5 @@
+from typing import override
+
 from pyexasol import ExaConnection
 
 from exasol.tdbp.database_object import DatabaseObject
@@ -18,7 +20,7 @@ class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
         """
         self.connection = connection
 
-
+    @override
     def on_create(self, database_object: DatabaseObject) -> None:
         """A database object was created.
 
@@ -37,6 +39,7 @@ class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
         self.connection.execute(sql)
         self.connection.commit()
 
+    @override
     def on_insert(self, table: Table, values: list) -> None:
         """
         A row was inserted into a table.
@@ -47,6 +50,7 @@ class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
         """
         self.on_insert_all(table, [values])
 
+    @override
     def on_insert_all(self, table: Table, values: list[list]) -> None:
         """
         Rows were inserted into a table.
@@ -60,6 +64,7 @@ class ExasolImmediateDatabaseObjectWriter(DatabaseObjectListener):
         )
         self.connection.commit()
 
+    @override
     def purge_user_objects(self) -> None:
         """Removes all user objects from the database.
 
